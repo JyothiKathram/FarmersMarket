@@ -4,23 +4,20 @@
 <html>
 <head>
 <h1><center><i>Connecticut Farmers Market</i></center></h1>
-<h2><center><i>Customer</i></center></h2>
+<h2><center><i>Farmer</i></center></h2>
 		
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title></title>
 <script type="text/javascript">
 
-	function validate1(){
+	function farmer_validate(){
 	
-		var FirstName = document.getElementById('FirstName').value;
-		var LastName = document.getElementById('LastName').value;
-	    var UserName = document.getElementById('UserName').value;
-	    var mailid = document.getElementById('mailid').value;
-	    var Password = document.getElementById('Password').value;
-	    var Confirmpassword = document.getElementById('Confirmpassword').value;
-	    var type = document.getElementById('Membertype').value;
+		var Addcrop = document.getElementById('Addcrop').value;
+		var Updateqty = document.getElementById('Updateqty').value;
+	    var Declareprice = document.getElementById('Declareprice').value;
+	   
 	
-	if(FirstName=="" || LastName=="" || UserName=="" || mailid=="" || Password=="" || Confirmpassword=="" || type=="Member type"){
+	if(Addcrop=="" || Updateqty=="" || Declareprice==""){
 		
 		alert('Please fill in all fields, fields cannot be empty');
 		return false;
@@ -37,6 +34,23 @@
 
 </head>
 <body  bgcolor="#ccffcc" >
+Welcome ${userid}
+<style type="text/css">
+
+.topRight {
+	float: right;
+}
+</style>	
+	
+<div class="topRight">
+<form action="Submit">
+				<font size="2"></font> <input type="button" value="Logout"
+					onclick="window.location='index.jsp'" />
+			</form>	
+			
+</div>
+
+
 
 <style type="text/css">
  .topMenu {
@@ -53,30 +67,29 @@
 </div>
 <div class="bottomMenu">
 
-<form action="signup_validate"  method="POST">		
 
-<center>Select Crop <select id="Membertype" name="Membertype" style="width: 100px; height: 25px;">
+
+<form action="farmerfunction_validate"  method="POST">		
+
+<center>Add Crop <select id="Addcrop" name="Addcrop" style="width: 100px; height: 25px;">
 <option selected disabled>Crop type</option>
-<option value="1">Rice</option>
-<option value="2">Wheat</option>
-<option value="3">Tomatoes</option>
-<option value="4">Potato</option>
-<option value="5">Green Grapes</option>
-<option value="6">Red Grapes</option>
-<option value="7">Strawberries</option>
-<option value="8">Apples</option>
-<option value="9">Green Apples</option>
-<option value="10">Oranges</option>
-<option value="11">Watermelon</option>
-<option value="12">Corn</option></select></center>
-<center>select Quantity<input type="text" name="UpdateQty" id="UpdateQty"/></center>
-<br><center><input type="submit" value="submit" onClick="return validate1();"/></center>
-<span style="color:red;">${errMsg1}</span>
-<span style="color:red;">${errMsg2}</span>
-<span style="color:red;">${errMsg11}</span>
-<span style="color:red;">${errMsg12}</span>
-<span style="color:red;">${errMsg13}</span>
-<span style="color:red;">${errMsg14}</span>
+<option value="Rice">Rice</option>
+<option value="Wheat">Wheat</option>
+<option value="Tomatoes">Tomatoes</option>
+<option value="Potato">Potato</option>
+<option value="Green Grapes">Green Grapes</option>
+<option value="Red Grapes">Red Grapes</option>
+<option value="Strawberries">Strawberries</option>
+<option value="Apples">Apples</option>
+<option value="Green Apples">Green Apples</option>
+<option value="Oranges">Oranges</option>
+<option value="Watermelon">Watermelon</option>
+<option value="Corn">Corn</option></select></center>
+<center>Update Quantity<input type="text" name="Updateqty" id="Updateqty"/></center>
+<center>Declare Price<input type="text" name="Declareprice" id="Declareprice"/></center>	
+<br><center><input type="submit" value="submit" onClick="return farmer_validate();"/></center>
+<span style="color:red;">${errMsg_f1}</span>
+
 </form>
 </div>
 </body>
