@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<h1><center><i>University of New Haven</i></center></h1>
-		<h2><center>Library Management System</center></h2>
+<h1><center><i>Connecticut Farmers Market</i></center></h1>
+		
 </head>
 <body bgcolor="#ccffcc">
 <br> </br>
