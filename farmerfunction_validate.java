@@ -5,12 +5,14 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class farmerfunction_validate
@@ -62,9 +64,22 @@ public class farmerfunction_validate extends HttpServlet {
 		{
 			Class.forName(driver); 
 			conn = DriverManager.getConnection(url+dbName,"root", "root");
+			String sql = "select emailid from usertable where username =?";
+			PreparedStatement statement = (PreparedStatement)conn.prepareStatement(sql);
 			
+			HttpSession session = request.getSession(true);
 			
-			String sql2 = "insert into farmer_crop(croptype, quantity, price) values('"+Add_crop+"','"+Update_qty+"','"+Declare_price+"');";
+			String Uname = session.getAttribute("userid").toString();
+			String emailid = null;
+			statement.setString(1, Uname);
+			
+			ResultSet result = statement.executeQuery();
+			if(result.next()){
+				
+				emailid =  result.getString("emailid");	
+			}
+			
+			String sql2 = "insert into farmer_crop(username, emailid,croptype, quantity, price) values('"+Uname+"','"+emailid+"','"+Add_crop+"','"+Update_qty+"','"+Declare_price+"');";
 			PreparedStatement pst = (PreparedStatement)conn.prepareStatement(sql2);
 			pst.execute();
 
@@ -72,6 +87,7 @@ public class farmerfunction_validate extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/Farmer_functions.jsp");
 			rd.forward(request, response); 
 		//	response.sendRedirect("Farmer_functions.jsp");
+			
 			
 		}catch(Exception e){
 			System.out.println("DB related Error");
