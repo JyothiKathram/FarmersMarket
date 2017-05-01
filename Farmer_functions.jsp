@@ -34,6 +34,7 @@
 
 </head>
 <body  bgcolor="#ccffcc" >
+	Welcome ${userid}
 <style type="text/css">
 
 .topRight {
@@ -42,7 +43,10 @@
 </style>	
 	
 <div class="topRight">
-		Welcome ${userid}	
+	<form action="Submit">
+				<font size="2"></font> <input type="button" value="Logout"
+					onclick="window.location='index.jsp'" />
+			</form>			
 </div>
 
 
